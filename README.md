@@ -21,8 +21,6 @@ The directory structure should look like ```My Documents > Arduino > hardware > 
 
 Now extract the previously downloaded ESP32 core in esp32 directory.
 
-<br>
-
 ## Interrupts In ESP32
 ESP32 provides up to 32 interrupt slots for each core. Each interrupt has a certain priority level and can be classified into two types.
 
@@ -38,14 +36,10 @@ This executable will download the Xtensa GNU tools and the ESP32 software develo
 
 You should see a few new folders in the “tools” directory, including “sdk” and “xtensa-esp32-elf” once it’s done.
 
-<br>
-
 ## ESP32 GPIO Interrupt
 In ESP32 we can define an interrupt service routine function that will be called when the GPIO pin changes its logic level.
 
 All GPIO pins in an ESP32 board can be configured to act as interrupt request inputs.
-
-<br>
 
 ## Attaching an Interrupt to a GPIO Pin
 In the Arduino IDE, we use a function called ```attachInterrupt()``` to set an interrupt on a pin by pin basis. The syntax looks like below.
@@ -70,14 +64,12 @@ This function accepts three arguments:
 | **FALLING**  | Triggers the interrupt when the pin goes from HIGH to LOW  |
 | **RISING**  | Triggers the interrupt when the pin goes from LOW to HIGH |
 
-<br>
 
 ## Detaching an Interrupt from a GPIO Pin
 When you want ESP32 to no longer monitor the pin, you can call the detachInterrupt() function. The syntax looks like below.
 ```
 detachInterrupt(GPIOPin);
 ```
-<br>
 
 ## Interrupt Service Routine
 The Interrupt Service Routine (ISR) is a function that is invoked every time an interrupt occurs on the GPIO pin.
@@ -93,8 +85,6 @@ ISRs in ESP32 are special kinds of functions that have some unique rules that mo
 An ISR cannot have any parameters, and they should not return anything.
 ISRs should be as short and fast as possible as they block normal program execution.
 They should have the IRAM_ATTR attribute, according to the ESP32 documentation.
-
-<br>
 
 ## Example Code: Simple Interrupt
 Here the above sketch is rewritten to demonstrate how to debounce an interrupt programmatically. In this sketch we allow the ISR to be executed only once on each button press, instead of executing it multiple times.

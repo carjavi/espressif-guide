@@ -189,6 +189,26 @@ https://lastminuteengineers.com/esp32-arduino-ide-tutorial/
 
 <br>
 
+
+
+
+# Install ESP32 Filesystem Uploader in Arduino IDE
+
+> :warning: **Warning:** At the moment, this is not compatible with Arduino 2.0.
+
+El ESP32 contiene un sistema de archivos flash de interfaz periférica en serie (SPIFFS). SPIFFS es un sistema de archivos liviano creado para microcontroladores con un chip flash, que está conectado por bus SPI, como la memoria flash ESP32. En este artículo, mostraremos cómo cargar fácilmente archivos al sistema de archivos ESP32 usando un complemento para Arduino IDE.
+
+SPIFFS le permite acceder a la memoria flash como lo haría en un sistema de archivos normal en su computadora, pero más simple y más limitado. Puede leer, escribir, cerrar y eliminar archivos. Al momento de escribir esta publicación, SPIFFS no admite directorios, por lo que todo se guarda en una estructura plana llamado ```data```. 
+
+ESP32:
+https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+
+ESP8266:
+https://randomnerdtutorials.com/install-esp8266-nodemcu-littlefs-arduino/
+
+<br>
+
+
 ---
 Copyright &copy; 2022 [carjavi](https://github.com/carjavi). <br>
 ```www.instintodigital.net``` <br>

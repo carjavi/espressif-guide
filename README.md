@@ -208,6 +208,24 @@ https://randomnerdtutorials.com/install-esp8266-nodemcu-littlefs-arduino/
 
 <br>
 
+# Install ESP32 Filesystem SPIFFS Uploader in Arduino IDE
+
+https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+
+<br>
+
+# Boards
+ESP32-Pinout
+<p align="center"><img src="./img/ESP32-Pinout.webp" width="800" alt=" " /></p>
+MH-ET-LIVE MiniKit-ESP32
+<p align="center"><img src="./img/MH-ET-LIVE MiniKit-ESP32.jpg" width="800" alt=" " /></p>
+ESP32-with-Slot Batter-18650
+<p align="center"><img src="./img/ESP32-with-Slot Batter-18650.jpg" width="800" alt=" " /></p>
+
+
+<br>
+<br>
+
 
 ---
 Copyright &copy; 2022 [carjavi](https://github.com/carjavi). <br>

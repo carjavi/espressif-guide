@@ -219,6 +219,7 @@ ESP32-Pinout
 <p align="center"><img src="./img/ESP32-Pinout.webp" width="800" alt=" " /></p>
 MH-ET-LIVE MiniKit-ESP32
 <p align="center"><img src="./img/MH-ET-LIVE MiniKit-ESP32.jpg" width="800" alt=" " /></p>
+<p align="center"><img src="./img/esp_mini_.jpg" width="800" alt=" " /></p>
 ESP32-with-Slot Batter-18650
 <p align="center"><img src="./img/ESP32-with-Slot Batter-18650.jpg" width="800" alt=" " /></p>
 

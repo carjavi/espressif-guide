@@ -180,6 +180,131 @@ void loop() {
 }
 ```
 
+# ESP32 UART comunication RPi (ttyS0 / ttyAMA0)
+Tx --> Tx <br>
+Rx --> Rx <br>
+
+> :warning: **Warning:** 
+* No se puede programar el ESP32 si esta conectado al bus UART de la raspberry
+* La Esp32 puede estar alimentado mientra se programa
+* El USB port de la ESP32 puede estar conectado a un PC pero solo se podra enviar datos desde la RPi, la PC solo leera la salida de datos de la RPi.
+
+
+ESP32 code
+```javascript
+void setup() {
+  Serial.begin(115200); // Configura la velocidad de baudios para la comunicación serial USB (para depuración)
+}
+
+void loop() {
+   // Leer desde el puerto serial USB (para depuración)
+  if (Serial.available()) {
+    String dataFromUSB = Serial.readStringUntil('\n');
+    Serial.print("Datos recibidos desde USB: ");
+    Serial.println(dataFromUSB);
+    // Aquí podrías realizar algún procesamiento de los datos si es necesario
+  }
+}
+```
+
+PRi code (nodejs)
+```javascript
+/**
+ * Control Basico UART
+ */
+
+const { SerialPort } = require('serialport')
+const { ReadlineParser } = require('@serialport/parser-readline')
+const port = new SerialPort({ path: '/dev/ttyS0', baudRate: 115200 }) // /dev/ttyUSB1   /dev/ttyS0
+
+const parser = port.pipe(new ReadlineParser())
+//parser.on('data', console.log)
+
+parser.on("data", (data) => {
+ // var str = data.String(data);
+  console.log("raw: " ,data);
+ // console.log("str: ",str);
+});
+
+port.on('open',function() {
+  console.log('Port open');
+  console.log('space ==> Scan');
+  console.log('esc ==> Stop');
+  console.log('c ==> Center');
+  console.log('w ==> EndCC');
+  console.log('s ==> EndCW');
+  console.log('Ctrl + c ==> Exit');
+});
+
+port.on("error", function(err) {
+  console.log("Error: ", err.message);
+});
+
+
+
+var keypress = require('keypress');
+ 
+// make `process.stdin` begin emitting "keypress" events
+keypress(process.stdin);
+
+
+// listen for the "keypress" event
+process.stdin.on('keypress', function (ch, key) {
+  //console.log('got "keypress"', key);
+  if (key.ctrl && key.name == "c") {
+    process.exit();
+  }
+
+  if (key.name == "right") {
+    console.log("right");
+    port.write('60\r\n');
+  }
+
+  if (key.name == "left") {
+    console.log("left");
+    port.write('70\r\n');
+  }
+
+  if (key.name == "up") {
+    console.log("up");
+    port.write('90\r\n');
+  }
+
+  if (key.name == "down") {
+    console.log("down");
+    port.write('80\r\n');
+  }
+
+  if (key.name == "escape") {
+    console.log("escape");
+    port.write('0\r\n');
+  }
+
+  if (key.name == "space") {
+    console.log("space");
+    port.write('10\r\n');
+  }
+
+  if (key.name == "w" || key.name == "W") {
+    port.write('30\r\n');
+  }
+
+  if (key.name == "s" || key.name == "S") {
+    port.write('40\r\n');
+  }
+
+  if (key.name == "c" || key.name == "C") {
+    port.write('20\r\n');
+  }
+
+});
+ 
+process.stdin.setRawMode(true);
+process.stdin.resume();
+
+
+```
+
 
 
 <br>
